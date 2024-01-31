@@ -11,4 +11,5 @@ With its intuitive user interface and seamless integration with other software, 
 
 Flori Vula 212257184 <br>
 Arion Morina 212255978 <br>
+Elon Bytyqi 212258204 <br>
 Zani Lleshi 2212257347 <br>
