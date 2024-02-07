@@ -1,0 +1,117 @@
+body{
+    padding: 0;
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+.hello{
+    background-image:url("../assets/background.jpg") ;
+    width: 100%;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    color: aliceblue;
+    font-size: large;
+    align-items: center;
+    width: 75%;
+    height: 150px;
+    letter-spacing:  3px;
+   
+}
+
+.navbar ul{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    width: 65%;
+}
+.nav-link{
+    color: aliceblue;
+    text-decoration: none;
+}
+.navbar .nav-link:hover {
+    text-decoration: underline; /* change color on hover */
+  }
+  
+  .navbar .nav-link.active {
+    font-weight: bold; /* style the active link differently */
+   text-decoration: underline; /* change color of the active link */
+  }
+
+
+.navbar button{
+    width: 200px;
+    height: 45px;
+    border-radius: 25px;
+    border: transparent;
+    background-color: rgb(101, 171, 214);
+    color: aliceblue;
+    font-size: medium;
+    letter-spacing: 2px;
+    
+}
+.section-container {
+    max-width: 1260px;
+    display:flex ; 
+    flex-direction: column;
+    height: 500px;
+    margin: 0 auto;
+}
+
+.butoni {
+    margin-top:120px ; /* Adjust as needed */
+    background-color: rgb(101, 171, 214);
+    width: 250px;
+    height: 50px;
+    border-radius: 25px;
+    border: transparent;
+    color: aliceblue;
+    font-size: medium;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 2px; 
+}
+
+.section-container h1 {
+    color: aliceblue;
+    font-size: 6em;
+     /* Adjust as needed */
+}
+
+.section-container p {
+    margin-top: -30px;
+    width: 35%;
+    color: aliceblue;
+    font-size: medium;
+}
+
+.btn{
+  margin-top: 20px;
+    background-color: rgb(101, 171, 214);
+    width: 170px;
+    height: 50px;
+    border-radius: 25px;
+    border: transparent;
+    color: aliceblue;
+    font-size: medium;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 1px; 
+}
+.btn2{
+    background-color:transparent;
+    border: 1px solid white;
+    margin-left: 15px;
+    width:170px;
+    height: 50px;
+    border-radius: 25px;
+    font-weight: bold;
+    color: aliceblue;
+    font-size: medium;
+    letter-spacing: 1px;  
+}

@@ -1,7 +1,7 @@
 import './App.css'
 import {Routes,Route,Navigate} from "react-router-dom"
-
-import Home from './Pages/Home'
+// import Home from './Pages/Home'
+import {HomePage} from './Pages/HomePage'
 
 function App() {
   
@@ -10,7 +10,7 @@ function App() {
     <>
     <Routes>
       <Route index element={<Navigate to="/home" />}/>
-      <Route path="/home" element={<Home />}/>
+      <Route path="/home" element={<HomePage />}/>
     </Routes>
     </>
   )
