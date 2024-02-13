@@ -4,6 +4,8 @@ import {Routes,Route,Navigate} from "react-router-dom"
 import {HomePage} from './Pages/HomePage'
 import CategoriesCard from './Pages/Components/CategoriesCard'
 import Orders from './Pages/Components/Orders'
+import SignIn from './Pages/SignIn'
+import SignUp from './Pages/SignUp'
 
 function App() {
   

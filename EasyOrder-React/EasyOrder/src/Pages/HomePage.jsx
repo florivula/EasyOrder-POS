@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink, Link } from 'react-router-dom';
 import "./HomePage.css";
+import SignIn from "./SignIn"
 
 export const HomePage = () => {
   return (
@@ -18,7 +19,7 @@ export const HomePage = () => {
         <button><Link to="" className='nav-link'> Log in / Sign up </Link></button>
      </div>
      <div className='section-container'>
-     <button className='butoni'><Link to="" className='nav-link'> Point of Scale System </Link></button>
+     <button className='butoni'><Link to="" className='nav-link'> Point of Sale System </Link></button>
      <h1>EasyOrder.</h1>
      <p>User-friendly part-of-sale online platform design exclusively for restaurants and cafes.</p>
      <span >
