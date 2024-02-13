@@ -85,7 +85,8 @@ body{
 }
 
 .section-container p {
-    margin-top: -30px;
+   padding-top: 15px;
+   padding-bottom: 25px;
     width: 35%;
     color: aliceblue;
     font-size: medium;
