@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PEd9x+5JSzBRa5d1X8SjJcI3/chT/XErxSXMSBXm3VNTWUMV+lPSq0mMkFqLrhoFv7vfecJFZXXuHdPjjf+aEw==",
+  "dgSpecHash": "jl5aGNmgenCytZKhi/6lotQqhLWVvS3Gf8+V/+2HQ4o1KTvzqrsUftnnUgkk38Ap5kg/uI7zfXxpoeDdTEDYkg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Loni\\Source\\Repos\\EasyOrder-POS\\EasyOrder\\EasyOrder\\EasyOrder.csproj",
+  "projectFilePath": "C:\\Users\\Loni\\Desktop\\EasyOrder-POS\\EasyOrder\\EasyOrder\\EasyOrder.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Loni\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Loni\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

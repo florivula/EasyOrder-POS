@@ -4516,11 +4516,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Loni\\Source\\Repos\\EasyOrder-POS\\EasyOrder\\EasyOrder\\EasyOrder.csproj",
+      "projectUniqueName": "C:\\Users\\Loni\\Desktop\\EasyOrder-POS\\EasyOrder\\EasyOrder\\EasyOrder.csproj",
       "projectName": "EasyOrder",
-      "projectPath": "C:\\Users\\Loni\\Source\\Repos\\EasyOrder-POS\\EasyOrder\\EasyOrder\\EasyOrder.csproj",
+      "projectPath": "C:\\Users\\Loni\\Desktop\\EasyOrder-POS\\EasyOrder\\EasyOrder\\EasyOrder.csproj",
       "packagesPath": "C:\\Users\\Loni\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Loni\\Source\\Repos\\EasyOrder-POS\\EasyOrder\\EasyOrder\\obj\\",
+      "outputPath": "C:\\Users\\Loni\\Desktop\\EasyOrder-POS\\EasyOrder\\EasyOrder\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
