@@ -1,5 +1,7 @@
 using EasyOrder.Data;
 using EasyOrder.Data.Services;
+using EasyOrder.Repository.Implementations;
+using EasyOrder.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +16,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<UserService>();
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+
 
 var app = builder.Build();
 

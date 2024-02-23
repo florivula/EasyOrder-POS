@@ -12,15 +12,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EasyOrder.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240222134335_OrderAndOrderItem")]
-    partial class OrderAndOrderItem
+    [Migration("20240222230959_Models")]
+    partial class Models
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0")
+                .HasAnnotation("ProductVersion", "8.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -129,6 +129,13 @@ namespace EasyOrder.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("userName")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
