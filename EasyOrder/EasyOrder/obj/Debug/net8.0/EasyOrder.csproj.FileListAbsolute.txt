@@ -420,3 +420,11 @@ C:\Users\Loni\Desktop\EasyOrder-POS\EasyOrder\EasyOrder\obj\Debug\net8.0\scopedc
 C:\Users\Loni\Desktop\EasyOrder-POS\EasyOrder\EasyOrder\obj\Debug\net8.0\EasyOrder.csproj.Up2Date
 C:\Users\Loni\Desktop\EasyOrder-POS\EasyOrder\EasyOrder\obj\Debug\net8.0\EasyOrder.genruntimeconfig.cache
 C:\Users\Loni\Desktop\EasyOrder-POS\EasyOrder\EasyOrder\obj\Debug\net8.0\ref\EasyOrder.dll
+F:\Flori\Fakulltet\Punime - Projekte - Detyra - Shenime\Semestri 4\Lenda Laboratorike 1\Final\Github Repository\EasyOrder-POS\EasyOrder\EasyOrder\bin\Debug\net8.0\Microsoft.AspNetCore.Authorization.dll
+F:\Flori\Fakulltet\Punime - Projekte - Detyra - Shenime\Semestri 4\Lenda Laboratorike 1\Final\Github Repository\EasyOrder-POS\EasyOrder\EasyOrder\bin\Debug\net8.0\Microsoft.AspNetCore.Components.dll
+F:\Flori\Fakulltet\Punime - Projekte - Detyra - Shenime\Semestri 4\Lenda Laboratorike 1\Final\Github Repository\EasyOrder-POS\EasyOrder\EasyOrder\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Forms.dll
+F:\Flori\Fakulltet\Punime - Projekte - Detyra - Shenime\Semestri 4\Lenda Laboratorike 1\Final\Github Repository\EasyOrder-POS\EasyOrder\EasyOrder\bin\Debug\net8.0\Microsoft.AspNetCore.Components.QuickGrid.dll
+F:\Flori\Fakulltet\Punime - Projekte - Detyra - Shenime\Semestri 4\Lenda Laboratorike 1\Final\Github Repository\EasyOrder-POS\EasyOrder\EasyOrder\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Web.dll
+F:\Flori\Fakulltet\Punime - Projekte - Detyra - Shenime\Semestri 4\Lenda Laboratorike 1\Final\Github Repository\EasyOrder-POS\EasyOrder\EasyOrder\bin\Debug\net8.0\Microsoft.AspNetCore.Metadata.dll
+F:\Flori\Fakulltet\Punime - Projekte - Detyra - Shenime\Semestri 4\Lenda Laboratorike 1\Final\Github Repository\EasyOrder-POS\EasyOrder\EasyOrder\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+F:\Flori\Fakulltet\Punime - Projekte - Detyra - Shenime\Semestri 4\Lenda Laboratorike 1\Final\Github Repository\EasyOrder-POS\EasyOrder\EasyOrder\bin\Debug\net8.0\Microsoft.JSInterop.dll

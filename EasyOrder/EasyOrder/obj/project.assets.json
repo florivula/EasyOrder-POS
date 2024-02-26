@@ -4777,24 +4777,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Loni\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Flori Vula\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Loni\\Desktop\\EasyOrder-POS\\EasyOrder\\EasyOrder\\EasyOrder.csproj",
+      "projectUniqueName": "F:\\Flori\\Fakulltet\\Punime - Projekte - Detyra - Shenime\\Semestri 4\\Lenda Laboratorike 1\\Final\\Github Repository\\EasyOrder-POS\\EasyOrder\\EasyOrder\\EasyOrder.csproj",
       "projectName": "EasyOrder",
-      "projectPath": "C:\\Users\\Loni\\Desktop\\EasyOrder-POS\\EasyOrder\\EasyOrder\\EasyOrder.csproj",
-      "packagesPath": "C:\\Users\\Loni\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Loni\\Desktop\\EasyOrder-POS\\EasyOrder\\EasyOrder\\obj\\",
+      "projectPath": "F:\\Flori\\Fakulltet\\Punime - Projekte - Detyra - Shenime\\Semestri 4\\Lenda Laboratorike 1\\Final\\Github Repository\\EasyOrder-POS\\EasyOrder\\EasyOrder\\EasyOrder.csproj",
+      "packagesPath": "C:\\Users\\Flori Vula\\.nuget\\packages\\",
+      "outputPath": "F:\\Flori\\Fakulltet\\Punime - Projekte - Detyra - Shenime\\Semestri 4\\Lenda Laboratorike 1\\Final\\Github Repository\\EasyOrder-POS\\EasyOrder\\EasyOrder\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Loni\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Flori Vula\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4814,11 +4809,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -4873,7 +4863,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

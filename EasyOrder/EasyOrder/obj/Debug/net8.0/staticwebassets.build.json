@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bxy88DwcsRW2ZmsboCOEv1mCtcSnS9utYz9kw/H/rms=",
+  "Hash": "cu4nUkYNtIM2GBOLwjQHv7+VsttWKF3EmqP6pcrG3YE=",
   "Source": "EasyOrder",
   "BasePath": "_content/EasyOrder",
   "Mode": "Default",
@@ -9,10 +9,10 @@
   "DiscoveryPatterns": [],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Loni\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.2\\staticwebassets\\Microsoft.AspNetCore.Components.QuickGrid.bundle.scp.css",
+      "Identity": "C:\\Users\\Flori Vula\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.2\\staticwebassets\\Microsoft.AspNetCore.Components.QuickGrid.bundle.scp.css",
       "SourceId": "Microsoft.AspNetCore.Components.QuickGrid",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Loni\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Flori Vula\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.2\\staticwebassets\\",
       "BasePath": "_content/Microsoft.AspNetCore.Components.QuickGrid",
       "RelativePath": "Microsoft.AspNetCore.Components.QuickGrid.bundle.scp.css",
       "AssetKind": "All",
@@ -25,13 +25,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Loni\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.2\\staticwebassets\\Microsoft.AspNetCore.Components.QuickGrid.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\Flori Vula\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.2\\staticwebassets\\Microsoft.AspNetCore.Components.QuickGrid.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\Loni\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.2\\staticwebassets\\QuickGrid.razor.js",
+      "Identity": "C:\\Users\\Flori Vula\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.2\\staticwebassets\\QuickGrid.razor.js",
       "SourceId": "Microsoft.AspNetCore.Components.QuickGrid",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Loni\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Flori Vula\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.2\\staticwebassets\\",
       "BasePath": "_content/Microsoft.AspNetCore.Components.QuickGrid",
       "RelativePath": "QuickGrid.razor.js",
       "AssetKind": "All",
@@ -44,13 +44,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Loni\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.2\\staticwebassets\\QuickGrid.razor.js"
+      "OriginalItemSpec": "C:\\Users\\Flori Vula\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.2\\staticwebassets\\QuickGrid.razor.js"
     },
     {
-      "Identity": "C:\\Users\\Loni\\Desktop\\EasyOrder-POS\\EasyOrder\\EasyOrder\\obj\\Debug\\net8.0\\scopedcss\\bundle\\EasyOrder.styles.css",
+      "Identity": "F:\\Flori\\Fakulltet\\Punime - Projekte - Detyra - Shenime\\Semestri 4\\Lenda Laboratorike 1\\Final\\Github Repository\\EasyOrder-POS\\EasyOrder\\EasyOrder\\obj\\Debug\\net8.0\\scopedcss\\bundle\\EasyOrder.styles.css",
       "SourceId": "EasyOrder",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Loni\\Desktop\\EasyOrder-POS\\EasyOrder\\EasyOrder\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "F:\\Flori\\Fakulltet\\Punime - Projekte - Detyra - Shenime\\Semestri 4\\Lenda Laboratorike 1\\Final\\Github Repository\\EasyOrder-POS\\EasyOrder\\EasyOrder\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/EasyOrder",
       "RelativePath": "EasyOrder.styles.css",
       "AssetKind": "All",
@@ -63,7 +63,7 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Loni\\Desktop\\EasyOrder-POS\\EasyOrder\\EasyOrder\\obj\\Debug\\net8.0\\scopedcss\\bundle\\EasyOrder.styles.css"
+      "OriginalItemSpec": "F:\\Flori\\Fakulltet\\Punime - Projekte - Detyra - Shenime\\Semestri 4\\Lenda Laboratorike 1\\Final\\Github Repository\\EasyOrder-POS\\EasyOrder\\EasyOrder\\obj\\Debug\\net8.0\\scopedcss\\bundle\\EasyOrder.styles.css"
     }
   ]
 }
