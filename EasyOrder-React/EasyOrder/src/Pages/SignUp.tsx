@@ -17,7 +17,7 @@ function Copyright(props: any) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
+      <Link color="inherit" href="/home">
         EasyOrder
       </Link>{' '}
       {new Date().getFullYear()}
@@ -34,6 +34,7 @@ export default function SignUp() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
+      name: data.get('firstName'),
       email: data.get('email'),
       password: data.get('password'),
     });
