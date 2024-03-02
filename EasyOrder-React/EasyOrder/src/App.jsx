@@ -6,6 +6,7 @@ import CategoriesCard from './Pages/Components/CategoriesCard'
 import Orders from './Pages/Components/Orders'
 import SignIn from './Pages/SignIn'
 import SignUp from './Pages/SignUp'
+import UserTable from './Pages/UserTable'
 
 function App() {
   
@@ -18,6 +19,7 @@ function App() {
       <Route path="/order" element={<Orders />}/>
       <Route path="/signin" element={<SignIn />}/>
       <Route path="/signup" element={<SignUp />}/>
+      <Route path="/usertable" element={<UserTable />}/>
     </Routes>
     </>
   )

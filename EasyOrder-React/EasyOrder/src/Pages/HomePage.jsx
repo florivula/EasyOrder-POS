@@ -23,7 +23,7 @@ export const HomePage = () => {
      <p>User-friendly point-of-sale online platform designed exclusively for restaurants and cafes.</p>
      <span >
       <button className='btn'><Link to="/signup" className='nav-link'>Create Account </Link></button>
-      <button className='btn2'><Link to="" className='nav-link'>Know More</Link></button>
+      <button className='btn2'><Link to="/usertable" className='nav-link'>Know More</Link></button>
      
        
      </span>

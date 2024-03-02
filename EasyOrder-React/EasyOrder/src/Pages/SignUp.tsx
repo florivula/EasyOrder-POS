@@ -1,4 +1,5 @@
 import * as React from 'react';
+import axios from 'axios';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -30,14 +31,27 @@ function Copyright(props: any) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+
     console.log({
       name: data.get('firstName'),
       email: data.get('email'),
       password: data.get('password'),
     });
+
+    try {
+      const response = await axios.post('https://localhost:44389/api/Signup', {
+        Name: data.get('firstName') + ' ' + data.get('lastName'),
+        Email: data.get('email'),
+        Password: data.get('password'),
+        Role: "Waiter",
+      });
+      console.log(response.data); // Handle success response
+    } catch (error) {
+      console.error(error); // Handle error response
+    }    
   };
 
   return (
