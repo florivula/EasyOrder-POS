@@ -14,7 +14,7 @@ const UsersTable: React.FC = () => {
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const response = await axios.get<User[]>('https://localhost:44389/api/users');
+        const response = await axios.get<User[]>('https://localhost:44389/api/Users/get_users');
         setUsers(response.data);
       } catch (error) {
         console.error(error);
