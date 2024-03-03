@@ -5,13 +5,28 @@ import Typography from '@mui/material/Typography';
 import GroupIcon from '@mui/icons-material/Group';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import CategoryIcon from '@mui/icons-material/Category';
+import { useNavigate } from 'react-router-dom';
 
 const AdminDashboard = () => {
+  const navigate = useNavigate();
+
   const headerStyle = {
     backgroundColor: '#3f51b5',
     color: 'white',
     padding: '10px',
     textAlign: 'center',
+  };
+
+  const handleUsersClick = () => {
+    navigate('/usertable');
+  };
+
+  const handleProductsClick = () => {
+    navigate('/products');
+  };
+
+  const handleCategoriesClick = () => {
+    navigate('/categories');
   };
 
   return (
@@ -37,6 +52,7 @@ const AdminDashboard = () => {
             variant="contained"
             startIcon={<GroupIcon />}
             sx={{ fontSize: '1.5rem', padding: '16px 0', width: '350px', height: '160px', backgroundColor: '#3f51b5', color: 'white' }}
+            onClick={handleUsersClick}
           >
             Users CRUD
           </Button>
@@ -44,6 +60,7 @@ const AdminDashboard = () => {
             variant="contained"
             startIcon={<LocalMallIcon />}
             sx={{ fontSize: '1.5rem', padding: '16px 0', width: '350px', height: '160px', backgroundColor: '#3f51b5', color: 'white' }}
+            onClick={handleProductsClick}
           >
             Products CRUD
           </Button>
@@ -51,6 +68,7 @@ const AdminDashboard = () => {
             variant="contained"
             startIcon={<CategoryIcon />}
             sx={{ fontSize: '1.5rem', padding: '16px 0', width: '350px', height: '160px', backgroundColor: '#3f51b5', color: 'white' }}
+            onClick={handleCategoriesClick}
           >
             Categories CRUD
           </Button>
