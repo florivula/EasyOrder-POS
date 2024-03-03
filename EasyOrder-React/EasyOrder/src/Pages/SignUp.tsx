@@ -27,7 +27,6 @@ function Copyright(props: any) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
 export default function SignUp() {
@@ -49,6 +48,10 @@ export default function SignUp() {
         Role: "Waiter",
       });
       console.log(response.data); // Handle success response
+      alert('User registered successfully!');
+      setTimeout(() => {
+        window.location.href = '/signin'; // Redirect to sign-in page while waiting for 1 second
+      }, 1000);
     } catch (error) {
       console.error(error); // Handle error response
     }    
