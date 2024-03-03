@@ -1,4 +1,6 @@
 import * as React from 'react';
+import axios from 'axios';
+import { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,34 +14,43 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 
-function Copyright(props: any) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="/home">
-        EasyOrder
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+function SignInSide() {
+  const navigate = useNavigate();
+  const [error, setError] = useState<string | null>(null);
 
-const defaultTheme = createTheme();
-
-export default function SignInSide() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    try {
+      const response = await axios.post('https://localhost:44389/api/Signin', {
+        email: data.get('email'),
+        password: data.get('password'),
+      });
+
+      console.log(response.data); // Handle success response
+      const role = response.data.role;
+      console.log(role);
+
+      // Redirect based on the user's role me delay 1 sekond
+      setTimeout(() => {
+        if (role === 'Admin') {
+          navigate('/admindashboard');
+        } else if (role === 'Waiter') {
+          navigate('/orders');
+        } else {
+          navigate('/homepage'); // Default redirect path
+        }
+      }, 1000);
+    } catch (error) {
+      console.error(error); // Handle error response
+      setError('Invalid email or password'); // Set error message
+    }
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={createTheme()}>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
         <Grid
@@ -106,6 +117,11 @@ export default function SignInSide() {
               >
                 Sign In
               </Button>
+              {error && (
+                <Typography variant="body2" color="error" align="center">
+                  {error}
+                </Typography>
+              )}
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">
@@ -118,7 +134,6 @@ export default function SignInSide() {
                   </Link>
                 </Grid>
               </Grid>
-              <Copyright sx={{ mt: 5 }} />
             </Box>
           </Box>
         </Grid>
@@ -126,3 +141,5 @@ export default function SignInSide() {
     </ThemeProvider>
   );
 }
+
+export default SignInSide;
