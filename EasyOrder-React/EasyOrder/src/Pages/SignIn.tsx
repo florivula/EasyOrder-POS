@@ -38,7 +38,7 @@ function SignInSide() {
         if (role === 'Admin') {
           navigate('/admindashboard');
         } else if (role === 'Waiter') {
-          navigate('/orders');
+          navigate('/order');
         } else {
           navigate('/homepage'); // Default redirect path
         }

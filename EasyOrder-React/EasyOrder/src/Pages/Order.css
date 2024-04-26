@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Set the container height to full viewport height */
+  }
+  
+  .header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+  }
+  
+  .content {
+    display: flex;
+    flex: 1; /* Allow the content area to grow to fill the remaining space */
+  }
+  
+  .middle {
+    display: flex;
+    flex-direction: column;
+    flex: 3; /* Make the middle section take up three times as much space as the right side */
+  }
+  
+  .middle-section {
+    flex: 1; /* Make each middle section take up equal space */
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 5px;
+  }
+  
+  .right-side {
+    flex: 1; /* Make the right side take up equal space */
+    padding: 10px;
+  }
+  
