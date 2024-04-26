@@ -1,7 +1,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    height: 100vh; /* Set the container height to full viewport height */
+    height: 100vh;
   }
   
   .header {
@@ -12,24 +12,24 @@
   
   .content {
     display: flex;
-    flex: 1; /* Allow the content area to grow to fill the remaining space */
+    flex: 1;
   }
   
   .middle {
     display: flex;
     flex-direction: column;
-    flex: 3; /* Make the middle section take up three times as much space as the right side */
+    flex: 3;
   }
   
   .middle-section {
-    flex: 1; /* Make each middle section take up equal space */
+    flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
     margin: 5px;
   }
   
   .right-side {
-    flex: 1; /* Make the right side take up equal space */
+    flex: 1;
     padding: 10px;
   }
   

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Order.css'; // Import your CSS file for styling
+import './Order.css';
 
 const App = () => {
     return (
