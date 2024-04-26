@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import EditUserModal from './EditUserModal'; // Import your Modal component
+import EditUserModal from './EditUserModal';
 
 interface User {
   id: number;

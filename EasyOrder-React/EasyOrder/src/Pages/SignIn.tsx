@@ -29,23 +29,23 @@ function SignInSide() {
         password: data.get('password'),
       });
 
-      console.log(response.data); // Handle success response
+      console.log(response.data);
       const role = response.data.role;
       console.log(role);
 
-      // Redirect based on the user's role me delay 1 sekond
+      // e bon redirekt based on the users role me delay 1 sekond
       setTimeout(() => {
         if (role === 'Admin') {
           navigate('/admindashboard');
         } else if (role === 'Waiter') {
           navigate('/order');
         } else {
-          navigate('/homepage'); // Default redirect path
+          navigate('/homepage');
         }
       }, 1000);
     } catch (error) {
-      console.error(error); // Handle error response
-      setError('Invalid email or password'); // Set error message
+      console.error(error);
+      setError('Invalid email or password');
     }
   };
 

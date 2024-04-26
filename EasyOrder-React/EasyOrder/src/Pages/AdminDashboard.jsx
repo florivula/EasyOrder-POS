@@ -6,6 +6,7 @@ import GroupIcon from '@mui/icons-material/Group';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import CategoryIcon from '@mui/icons-material/Category';
 import { useNavigate } from 'react-router-dom';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -27,6 +28,10 @@ const AdminDashboard = () => {
 
   const handleCategoriesClick = () => {
     navigate('/categories');
+  };
+
+  const handleOrdersListClick = () => {
+    navigate('/orderslist');
   };
 
   return (
@@ -71,6 +76,14 @@ const AdminDashboard = () => {
             onClick={handleCategoriesClick}
           >
             Categories CRUD
+          </Button>
+          <Button
+            variant="contained"
+            startIcon={<ShoppingCartIcon />}
+            sx={{ fontSize: '1.5rem', padding: '16px 0', width: '350px', height: '160px', backgroundColor: '#3f51b5', color: 'white' }}
+            onClick={handleOrdersListClick}
+          >
+            Orders
           </Button>
         </Box>
       </Box>

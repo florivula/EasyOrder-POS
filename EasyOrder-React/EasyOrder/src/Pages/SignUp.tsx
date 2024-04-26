@@ -47,13 +47,13 @@ export default function SignUp() {
         Password: data.get('password'),
         Role: "Waiter",
       });
-      console.log(response.data); // Handle success response
+      console.log(response.data);
       alert('User registered successfully!');
       setTimeout(() => {
-        window.location.href = '/signin'; // Redirect to sign-in page while waiting for 1 second
+        window.location.href = '/signin';
       }, 1000);
     } catch (error) {
-      console.error(error); // Handle error response
+      console.error(error);
     }    
   };
 
