@@ -9,5 +9,16 @@ namespace EasyOrder.Data
         public AppDbContext(DbContextOptions<AppDbContext> options):base(options) { }
 
         public DbSet<Users> Users { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>()
+                .HasOne(p => p.ProductCategory)
+                .WithMany(c => c.Products)
+                .HasForeignKey(p => p.CategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+        }
     }
 }
