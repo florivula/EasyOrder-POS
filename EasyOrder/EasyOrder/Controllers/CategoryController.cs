@@ -34,11 +34,19 @@ namespace EasyOrder.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateCategory(Category category)
+        public IActionResult CreateCategory([FromBody] Category category)
         {
-            _categoryServices.AddCategory(category);
-            return CreatedAtAction(nameof(GetCategoryById), new { id = category.Id }, category);
+            try
+            {
+                _categoryServices.AddCategory(category);
+                return CreatedAtAction(nameof(GetCategoryById), new { id = category.Id }, category);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "An error occurred while creating the category.");
+            }
         }
+
 
         [HttpPut("{id}")]
         public IActionResult UpdateCategory(int id, Category category)

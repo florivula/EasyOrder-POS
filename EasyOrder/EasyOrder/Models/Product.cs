@@ -10,8 +10,5 @@ namespace EasyOrder.Models
 
         // foreign keyy
         public int CategoryId { get; set; }
-
-        // per navigim edhe kjo
-        public Category ProductCategory { get; set; }
     }
 }
