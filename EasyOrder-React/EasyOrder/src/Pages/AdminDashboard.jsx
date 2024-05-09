@@ -45,6 +45,9 @@ const AdminDashboard = () => {
           justifyContent: 'center',
           alignItems: 'center',
           height: 'calc(100vh - 90px)',
+          backgroundColor: '#1f2021',
+          overflow: 'hidden',
+          borderBottom: '52px solid #1f2021',
         }}
       >
         <Box
