@@ -6,7 +6,7 @@ interface Product {
   id: number;
   name: string;
   price: number;
-  categoryid: number;
+  categoryId: number;
 }
 
 const ProductsTable: React.FC = () => {
@@ -77,7 +77,7 @@ const ProductsTable: React.FC = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', background: '#f0f0f0', padding: '20px' }}>
-      <table style={{ color: '#333', width: '80%', maxWidth: '1200px', background: 'white', borderCollapse: 'collapse', borderRadius: '10px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)' }}>
+      <table style={{ color: '#333', width: '65%', maxWidth: '1200px', background: 'white', borderCollapse: 'collapse', borderRadius: '10px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)' }}>
         <thead>
           <tr style={{ backgroundColor: '#333', color: 'white' }}>
             <th style={{ padding: '10px', borderBottom: '2px solid white', textAlign: 'left' }}>ID</th>
@@ -93,7 +93,7 @@ const ProductsTable: React.FC = () => {
               <td style={{ padding: '10px', textAlign: 'left' }}>{product.id}</td>
               <td style={{ padding: '10px', textAlign: 'left' }}>{product.name}</td>
               <td style={{ padding: '10px', textAlign: 'left' }}>{product.price}</td>
-              <td style={{ padding: '10px', textAlign: 'left' }}>{product.categoryid}</td>
+              <td style={{ padding: '10px', textAlign: 'left' }}>{product.categoryId}</td>
               <td style={{ padding: '10px', textAlign: 'left' }}>
                 <button style={{ padding: '5px 10px', marginRight: '5px', backgroundColor: '#3f51b5', color: 'white', border: 'none', borderRadius: '3px', cursor: 'pointer' }} onClick={() => handleEdit(product.id)}>Edit</button>
                 <button style={{ padding: '5px 10px', backgroundColor: '#f44336', color: 'white', border: 'none', borderRadius: '3px', cursor: 'pointer' }} onClick={() => handleDelete(product.id)}>Delete</button>
@@ -110,7 +110,7 @@ const ProductsTable: React.FC = () => {
         onSave={handleSaveEdit}
         name={products.find(product => product.id === selectedproductId)?.name || ''}
         price={products.find(product => product.id === selectedproductId)?.price || 0}
-        categoryId={products.find(product => product.id === selectedproductId)?.categoryid || 0}
+        categoryId={products.find(product => product.id === selectedproductId)?.categoryId || 0}
       />
     </div>
   );

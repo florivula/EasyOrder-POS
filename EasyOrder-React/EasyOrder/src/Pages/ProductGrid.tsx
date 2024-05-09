@@ -34,7 +34,7 @@ const ProductGrid: React.FC = () => {
         <div key={product.id} className="product-box" onClick={() => handleClick(product.id,product.name,product.price)}>
           <div>
             <h3>{product.name}</h3>
-            <p>Price: {product.price}</p>
+            <p>Price: {product.price}€</p>
           </div>
         </div>
       ))}

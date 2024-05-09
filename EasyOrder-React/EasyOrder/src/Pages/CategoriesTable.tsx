@@ -6,8 +6,6 @@ import EditCategoryModal from './EditCategoryModal';
 interface Category {
   id: number;
   name: string;
-  price: number;
-  categoryid: number;
 }
 
 const CategoriesTable: React.FC = () => {
@@ -36,7 +34,7 @@ const CategoriesTable: React.FC = () => {
 
   const handleSaveEdit = async (categoryId: number, newName: string) => {
     try {
-      await axios.put(`https://localhost:44389/api/Category/1${categoryId}`, { id: categoryId, name: newName}, { headers: { 'Content-Type': 'application/json' } });
+      await axios.put(`https://localhost:44389/api/Category/${categoryId}`, { id: categoryId, name: newName}, { headers: { 'Content-Type': 'application/json' } });
       setcategories(prevcategories => {
         return prevcategories.map(category => {
           if (category.id === categoryId) {
@@ -53,7 +51,7 @@ const CategoriesTable: React.FC = () => {
 
   const handleDelete = async (categoryId: number) => {
     try {
-      await axios.delete(`https://localhost:44389/api/Category/1${categoryId}`);
+      await axios.delete(`https://localhost:44389/api/Category/${categoryId}`);
       const updatedcategories = categories.filter(category => category.id !== categoryId);
       setcategories(updatedcategories);
     } catch (error) {
@@ -78,7 +76,7 @@ const CategoriesTable: React.FC = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', background: '#f0f0f0', padding: '20px' }}>
-      <table style={{ color: '#333', width: '80%', maxWidth: '1200px', background: 'white', borderCollapse: 'collapse', borderRadius: '10px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)' }}>
+      <table style={{ color: '#333', width: '30%', maxWidth: '1200px', background: 'white', borderCollapse: 'collapse', borderRadius: '10px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)' }}>
         <thead>
           <tr style={{ backgroundColor: '#333', color: 'white' }}>
             <th style={{ padding: '10px', borderBottom: '2px solid white', textAlign: 'left' }}>ID</th>
@@ -99,7 +97,7 @@ const CategoriesTable: React.FC = () => {
           ))}
         </tbody>
       </table>
-      <button style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#3f51b5', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }} onClick={() => setModalOpen(true)}>Add New Product</button>
+      <button style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#3f51b5', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }} onClick={() => setModalOpen(true)}>Add New Category</button>
       <EditCategoryModal
         open={modalOpen}
         onClose={handleCloseModal}
