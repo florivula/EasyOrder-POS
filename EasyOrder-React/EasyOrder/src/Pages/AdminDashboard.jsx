@@ -23,7 +23,7 @@ const AdminDashboard = () => {
   };
 
   const handleProductsClick = () => {
-    navigate('/products');
+    navigate('/productstable');
   };
 
   const handleCategoriesClick = () => {
