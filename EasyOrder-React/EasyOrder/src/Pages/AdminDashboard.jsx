@@ -27,7 +27,7 @@ const AdminDashboard = () => {
   };
 
   const handleCategoriesClick = () => {
-    navigate('/categories');
+    navigate('/categoriestable');
   };
 
   const handleOrdersListClick = () => {

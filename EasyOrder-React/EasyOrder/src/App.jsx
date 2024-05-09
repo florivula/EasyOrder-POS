@@ -7,6 +7,7 @@ import UserTable from './Pages/UserTable'
 import ProductsTable from "./Pages/ProductsTable"
 import AdminDashboard from './Pages/AdminDashboard'
 import OrdersList from './Pages/OrdersList'
+import CategoriesTable from "./Pages/CategoriesTable"
 
 function App() {
   
@@ -21,6 +22,7 @@ function App() {
       <Route path="/signup" element={<SignUp />}/>
       <Route path="/usertable" element={<UserTable />}/>
       <Route path="/productstable" element={<ProductsTable />}/>
+      <Route path="/categoriestable" element={<CategoriesTable />}/>
       <Route path="/admindashboard" element={<AdminDashboard />}/>
       <Route path="/orderslist" element={<OrdersList />}/>
     </Routes>
