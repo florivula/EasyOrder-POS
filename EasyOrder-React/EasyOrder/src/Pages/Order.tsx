@@ -1,6 +1,7 @@
 import React from 'react';
 import './Order.css';
 import ProductGrid from './ProductGrid';
+import CategoriesGrid from './CategoriesGrid';
 
 const App = () => {
     return (
@@ -9,10 +10,13 @@ const App = () => {
         <div className="content">
           <div className="middle">
             <div className="middle-section">
+              Categories
+              <CategoriesGrid/>
+            </div>
+            <div className="middle-section">
               Products
             <ProductGrid/>
             </div>
-            <div className="middle-section">Categories</div>
           </div>
           <div className="right-side">Order</div>
         </div>
