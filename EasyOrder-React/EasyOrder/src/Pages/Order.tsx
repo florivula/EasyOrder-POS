@@ -4,13 +4,13 @@ import './Order.css';
 const App = () => {
     return (
       <div className="container">
-        <header className="header">Header</header>
+        <header className="header">EasyOrder</header>
         <div className="content">
           <div className="middle">
-            <div className="middle-section">Middle Section 1</div>
-            <div className="middle-section">Middle Section 2</div>
+            <div className="middle-section">Products</div>
+            <div className="middle-section">Categories</div>
           </div>
-          <div className="right-side">Right Side</div>
+          <div className="right-side">Order</div>
         </div>
       </div>
     );
