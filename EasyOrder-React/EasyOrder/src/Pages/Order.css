@@ -14,6 +14,8 @@
   .content {
     display: flex;
     flex: 1;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
   
   .middle {
@@ -34,3 +36,15 @@
     padding: 10px;
   }
   
+  .products-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  padding: 10px;
+}
+
+.product-box {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
