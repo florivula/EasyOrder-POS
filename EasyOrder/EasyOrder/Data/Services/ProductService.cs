@@ -19,6 +19,13 @@ namespace EasyOrder.Data.Services
             return products;
         }
 
+        public List<Product> GetProductsByCategoryId(int categoryId)
+        {
+            var products = _context.Products.Where(p => p.CategoryId == categoryId).ToList();
+            return products;
+        }
+
+
         public Product GetProductById(int id)
         {
             return _context.Products.FirstOrDefault(u => u.Id == id);

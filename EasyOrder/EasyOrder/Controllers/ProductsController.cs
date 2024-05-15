@@ -22,6 +22,14 @@ namespace EasyOrder.Controllers
             return Ok(products);
         }
 
+        [HttpGet("get_products_by_category/{categoryId}")]
+        public IActionResult GetProductsByCategoryId(int categoryId)
+        {
+            var products = _productServices.GetProductsByCategoryId(categoryId);
+            return Ok(products);
+        }
+
+
         [HttpGet("{id}")]
         public IActionResult GetProductById(int id)
         {

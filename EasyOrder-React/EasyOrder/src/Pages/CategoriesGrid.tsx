@@ -6,7 +6,19 @@ interface Category {
   name: string;
 }
 
-const CategoriesGrid: React.FC = () => {
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  // Add other properties if needed
+}
+
+
+interface CategoryGridProps {
+  setSelectedCategoryId: (id: number) => void;
+}
+
+const CategoriesGrid: React.FC<CategoryGridProps> = ({ setSelectedCategoryId }) => {
   const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
@@ -23,7 +35,17 @@ const CategoriesGrid: React.FC = () => {
   }, []);
 
   const handleClick = (categoryId: number, categoryName: string) => {
-    console.log('Category clicked:', categoryId, categoryName);
+    setSelectedCategoryId(categoryId);
+    fetchProductsByCategory(categoryId);
+  };
+
+  const fetchProductsByCategory = async (categoryId: number) => {
+    try {
+      const response = await axios.get<[Product]>(`https://localhost:44389/api/Product/get_products_by_category/${categoryId}`);
+      // Handle the response to update the products in the ProductGrid component
+    } catch (error) {
+      console.error('Error fetching products by category:', error);
+    }
   };
 
   return (
