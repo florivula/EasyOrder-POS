@@ -31,7 +31,7 @@ const CategoriesTable: React.FC = () => {
 
   const handleEdit = (categoryId: number) => {
     setSelectedcategoryId(categoryId);
-    setAddModalOpen(true);
+    setEditModalOpen(true);
   };
 
   const handleSaveEdit = async (categoryId: number, newName: string) => {

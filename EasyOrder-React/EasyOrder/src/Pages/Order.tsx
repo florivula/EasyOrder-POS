@@ -20,7 +20,11 @@ const Order = () => {
   };
 
   const handleClearProducts = () => {
-    setSelectedProducts([]); // Clear selected products
+    setSelectedProducts([]);
+  };
+
+  const handleCancelOrder = () => {
+    setSelectedProducts([]);
   };
 
     return (
@@ -38,7 +42,7 @@ const Order = () => {
             </div>
           </div>
           <div className="right-side">
-            <OrderSummary selectedProducts={selectedProducts} onCompleteOrder={handleClearProducts}/>
+            <OrderSummary selectedProducts={selectedProducts} onCompleteOrder={handleClearProducts} onCancelOrder={handleCancelOrder}/>
             </div>
         </div>
       </div>

@@ -9,15 +9,19 @@ interface Product {
 
 interface OrderSummaryProps {
   selectedProducts: Product[];
-  onCompleteOrder: () => void; // Function to complete the order
+  onCompleteOrder: () => void;
+  onCancelOrder: () => void;
 }
 
-const OrderSummary: React.FC<OrderSummaryProps> = ({ selectedProducts, onCompleteOrder }) => {
+const OrderSummary: React.FC<OrderSummaryProps> = ({ selectedProducts, onCompleteOrder, onCancelOrder }) => {
   const calculateTotal = (): number => {
     return selectedProducts.reduce((total, product) => total + product.price, 0);
   };
 
   const handleCompleteOrder = async () => {
+    if(selectedProducts.length === 0){
+      alert('Please select a product first.');
+    }else{
     try {
       const total = calculateTotal();
       const productsString = selectedProducts.map(product => `${product.name} - ${product.price}€`).join(', ');
@@ -31,6 +35,11 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ selectedProducts, onComplet
       console.error('Error completing order:', error);
       alert('Failed to place order. Please try again.');
     }
+  }
+  };
+
+  const handleCancelOrder = () => {
+    onCancelOrder(); // Clear selected products
   };
 
   return (
@@ -45,7 +54,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ selectedProducts, onComplet
       </ul>
       <h3 className='totali'>Total: {calculateTotal()}€</h3>
       <button className='order-button' onClick={handleCompleteOrder}>Complete Order</button>
-      <button className='order-button cancel-button'>Cancel Order</button>
+      <button className='order-button cancel-button' onClick={handleCancelOrder}>Cancel Order</button>
     </div>
   );
 };
