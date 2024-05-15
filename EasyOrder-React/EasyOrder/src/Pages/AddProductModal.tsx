@@ -1,25 +1,24 @@
 import React, { useState } from 'react';
-import { Button, Modal, Box, TextField, Typography, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { Button, Modal, Box, TextField, Typography } from '@mui/material';
 
-interface AddUserModalProps {
+interface AddProductModalProps {
   open: boolean;
   onClose: () => void;
-  onSave: (name: string, email: string, password:string, role: string) => Promise<void>;
+  onSave: (name: string, price: number, categoryId: number) => Promise<void>;
 }
 
-const AddUserModal: React.FC<AddUserModalProps> = ({ open, onClose, onSave }) => {
+const AddProductModal: React.FC<AddProductModalProps> = ({ open, onClose, onSave }) => {
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [role, setRole] = useState('');
+  const [price, setPrice] = useState('');
+  const [categoryId, setCategoryId] = useState('');
 
   const handleSave = async () => {
-    if (!name || !email || !password || !role) {
+    if (!name || !price || !categoryId) {
       alert('Please fill in all fields');
       return;
     }
 
-    await onSave(name, email, password, role);
+    await onSave(name, parseFloat(price), parseFloat(categoryId));
     onClose();
   };
 
@@ -40,7 +39,7 @@ const AddUserModal: React.FC<AddUserModalProps> = ({ open, onClose, onSave }) =>
         }}
       >
         <Typography variant="h6" gutterBottom>
-          Add User
+          Add Product
         </Typography>
         <TextField
           label="Name"
@@ -50,31 +49,19 @@ const AddUserModal: React.FC<AddUserModalProps> = ({ open, onClose, onSave }) =>
           margin="normal"
         />
         <TextField
-          label="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          label="Price"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
           fullWidth
           margin="normal"
         />
         <TextField
-          label="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          label="Category ID"
+          value={categoryId}
+          onChange={(e) => setCategoryId(e.target.value)}
           fullWidth
           margin="normal"
         />
-        <FormControl fullWidth margin="normal">
-          <InputLabel id="role-label">Role</InputLabel>
-          <Select
-            labelId="role-label"
-            id="role"
-            value={role}
-            onChange={(e) => setRole(e.target.value as string)}
-          >
-            <MenuItem value="Admin">Admin</MenuItem>
-            <MenuItem value="Waiter">Waiter</MenuItem>
-          </Select>
-        </FormControl>
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
           <Button onClick={handleSave} variant="contained" color="primary" sx={{ mr: 2 }}>
             Save
@@ -88,4 +75,4 @@ const AddUserModal: React.FC<AddUserModalProps> = ({ open, onClose, onSave }) =>
   );
 };
 
-export default AddUserModal;
+export default AddProductModal;

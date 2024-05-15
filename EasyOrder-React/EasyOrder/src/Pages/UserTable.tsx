@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import EditUserModal from './EditUserModal';
+import AddUserModal from './AddUserModal';
 
 interface User {
   id: number;
@@ -11,7 +12,8 @@ interface User {
 
 const UsersTable: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [addModalOpen, setAddModalOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
 
   useEffect(() => {
@@ -29,7 +31,7 @@ const UsersTable: React.FC = () => {
 
   const handleEdit = (userId: number) => {
     setSelectedUserId(userId);
-    setModalOpen(true);
+    setEditModalOpen(true);
   };
 
   const handleSaveEdit = async (userId: number, newName: string, newEmail: string, newRole: string) => {
@@ -43,7 +45,7 @@ const UsersTable: React.FC = () => {
           return user;
         });
       });
-      setModalOpen(false);
+      setEditModalOpen(false);
     } catch (error) {
       console.error(error);
     }
@@ -59,16 +61,16 @@ const UsersTable: React.FC = () => {
     }
   };
 
-  const handleCloseModal = () => {
-    setModalOpen(false);
+  const handleCloseEditModal = () => {
+    setEditModalOpen(false);
     setSelectedUserId(null);
   };
 
-  const handleAddUser = async (newName: string, newEmail: string, newRole: string) => {
+  const handleAddUser = async (newName: string, newEmail: string, newPassword: string,newRole: string) => {
     try {
-      const response = await axios.post<User>('https://localhost:44389/api/Users', { name: newName, email: newEmail, password: 'string', role: newRole }, { headers: { 'Content-Type': 'application/json' } });
+      const response = await axios.post<User>('https://localhost:44389/api/Users', { name: newName, email: newEmail, password: newPassword, role: newRole }, { headers: { 'Content-Type': 'application/json' } });
       setUsers(prevUsers => [...prevUsers, response.data]);
-      setModalOpen(false);
+      setAddModalOpen(false);
     } catch (error) {
       console.error(error);
     }
@@ -101,10 +103,15 @@ const UsersTable: React.FC = () => {
           ))}
         </tbody>
       </table>
-      <button style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#3f51b5', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }} onClick={() => setModalOpen(true)}>Add New User</button>
+      <button style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#3f51b5', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }} onClick={() => setAddModalOpen(true)}>Add New User</button>
+      <AddUserModal
+        open={addModalOpen}
+        onClose={() => setAddModalOpen(false)}
+        onSave={handleAddUser}
+      />
       <EditUserModal
-        open={modalOpen}
-        onClose={handleCloseModal}
+        open={editModalOpen}
+        onClose={handleCloseEditModal}
         userId={selectedUserId || 0}
         onSave={handleSaveEdit}
         name={users.find(user => user.id === selectedUserId)?.name || ''}

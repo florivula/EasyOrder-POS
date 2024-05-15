@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import EditProductModal from './EditProductModal';
+import AddProductModal from './AddProductModal';
 
 interface Product {
   id: number;
@@ -11,7 +12,8 @@ interface Product {
 
 const ProductsTable: React.FC = () => {
   const [products, setproducts] = useState<Product[]>([]);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [addModalOpen, setAddModalOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
   const [selectedproductId, setSelectedproductId] = useState<number | null>(null);
   
 
@@ -30,7 +32,7 @@ const ProductsTable: React.FC = () => {
 
   const handleEdit = (productId: number) => {
     setSelectedproductId(productId);
-    setModalOpen(true);
+    setEditModalOpen(true);
   };
 
   const handleSaveEdit = async (productId: number, newName: string, newPrice: number, newCategoryId: number) => {
@@ -44,7 +46,7 @@ const ProductsTable: React.FC = () => {
           return product;
         });
       });
-      setModalOpen(false);
+      setEditModalOpen(false);
     } catch (error) {
       console.error(error);
     }
@@ -60,16 +62,16 @@ const ProductsTable: React.FC = () => {
     }
   };
 
-  const handleCloseModal = () => {
-    setModalOpen(false);
+  const handleCloseEditModal = () => {
+    setEditModalOpen(false);
     setSelectedproductId(null);
   };
 
-  const handleAddproduct = async (newName: string, newPrice: number, newCategoryId: number) => {
+  const handleAddProduct = async (newName: string, newPrice: number, newCategoryId: number) => {
     try {
-      const response = await axios.post<Product>('https://localhost:44389/api/Product', { name: newName, price: newPrice, categoryid: newCategoryId }, { headers: { 'Content-Type': 'application/json' } });
+      const response = await axios.post<Product>('https://localhost:44389/api/Product', { name: newName, price: newPrice, categoryId: newCategoryId }, { headers: { 'Content-Type': 'application/json' } });
       setproducts(prevproducts => [...prevproducts, response.data]);
-      setModalOpen(false);
+      setAddModalOpen(false);
     } catch (error) {
       console.error(error);
     }
@@ -102,10 +104,15 @@ const ProductsTable: React.FC = () => {
           ))}
         </tbody>
       </table>
-      <button style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#3f51b5', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }} onClick={() => setModalOpen(true)}>Add New Product</button>
+      <button style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#3f51b5', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }} onClick={() => setAddModalOpen(true)}>Add New Product</button>
+      <AddProductModal
+        open={addModalOpen}
+        onClose={() => setAddModalOpen(false)}
+        onSave={handleAddProduct}
+      />
       <EditProductModal
-        open={modalOpen}
-        onClose={handleCloseModal}
+        open={editModalOpen}
+        onClose={handleCloseEditModal}
         productid={selectedproductId || 0}
         onSave={handleSaveEdit}
         name={products.find(product => product.id === selectedproductId)?.name || ''}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Category } from '@mui/icons-material';
 import EditCategoryModal from './EditCategoryModal';
+import AddCategoryModal from './AddCategoryModal';
 
 interface Category {
   id: number;
@@ -10,7 +11,8 @@ interface Category {
 
 const CategoriesTable: React.FC = () => {
   const [categories, setcategories] = useState<Category[]>([]);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [addModalOpen, setAddModalOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
   const [selectedcategoryId, setSelectedcategoryId] = useState<number | null>(null);
   
 
@@ -29,7 +31,7 @@ const CategoriesTable: React.FC = () => {
 
   const handleEdit = (categoryId: number) => {
     setSelectedcategoryId(categoryId);
-    setModalOpen(true);
+    setAddModalOpen(true);
   };
 
   const handleSaveEdit = async (categoryId: number, newName: string) => {
@@ -43,7 +45,7 @@ const CategoriesTable: React.FC = () => {
           return category;
         });
       });
-      setModalOpen(false);
+      setEditModalOpen(false);
     } catch (error) {
       console.error(error);
     }
@@ -59,8 +61,8 @@ const CategoriesTable: React.FC = () => {
     }
   };
 
-  const handleCloseModal = () => {
-    setModalOpen(false);
+  const handleCloseEditModal = () => {
+    setEditModalOpen(false);
     setSelectedcategoryId(null);
   };
 
@@ -68,7 +70,7 @@ const CategoriesTable: React.FC = () => {
     try {
       const response = await axios.post<Category>('https://localhost:44389/api/Category', { name: newName}, { headers: { 'Content-Type': 'application/json' } });
       setcategories(prevcategories => [...prevcategories, response.data]);
-      setModalOpen(false);
+      setAddModalOpen(false);
     } catch (error) {
       console.error(error);
     }
@@ -97,10 +99,15 @@ const CategoriesTable: React.FC = () => {
           ))}
         </tbody>
       </table>
-      <button style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#3f51b5', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }} onClick={() => setModalOpen(true)}>Add New Category</button>
+      <button style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#3f51b5', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }} onClick={() => setAddModalOpen(true)}>Add New Category</button>
+      <AddCategoryModal
+        open={addModalOpen}
+        onClose={() => setAddModalOpen(false)}
+        onSave={handleAddcategory}
+      />
       <EditCategoryModal
-        open={modalOpen}
-        onClose={handleCloseModal}
+        open={editModalOpen}
+        onClose={handleCloseEditModal}
         Categoryid={selectedcategoryId || 0}
         onSave={handleSaveEdit}
         name={categories.find(category => category.id === selectedcategoryId)?.name || ''}
