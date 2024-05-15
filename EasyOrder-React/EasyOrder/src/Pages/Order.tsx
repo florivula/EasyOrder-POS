@@ -14,10 +14,13 @@ const Order = () => {
   const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
 
-
   const handleProductClick = (productId: number, productName: string, productPrice: number) => {
     const newProduct = { id: productId, name: productName, price: productPrice };
     setSelectedProducts([...selectedProducts, newProduct]);
+  };
+
+  const handleClearProducts = () => {
+    setSelectedProducts([]); // Clear selected products
   };
 
     return (
@@ -35,7 +38,7 @@ const Order = () => {
             </div>
           </div>
           <div className="right-side">
-            <OrderSummary selectedProducts={selectedProducts}/>
+            <OrderSummary selectedProducts={selectedProducts} onCompleteOrder={handleClearProducts}/>
             </div>
         </div>
       </div>

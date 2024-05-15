@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 interface Product {
   id: number;
@@ -8,11 +9,28 @@ interface Product {
 
 interface OrderSummaryProps {
   selectedProducts: Product[];
+  onCompleteOrder: () => void; // Function to complete the order
 }
 
-const OrderSummary: React.FC<OrderSummaryProps> = ({ selectedProducts }) => {
+const OrderSummary: React.FC<OrderSummaryProps> = ({ selectedProducts, onCompleteOrder }) => {
   const calculateTotal = (): number => {
     return selectedProducts.reduce((total, product) => total + product.price, 0);
+  };
+
+  const handleCompleteOrder = async () => {
+    try {
+      const total = calculateTotal();
+      const productsString = selectedProducts.map(product => `${product.name} - ${product.price}€`).join(', ');
+      await axios.post('https://localhost:44389/api/Order', {
+        products: productsString,
+        total: total
+      });
+      onCompleteOrder(); // Clear selected products
+      alert('Order placed successfully!');
+    } catch (error) {
+      console.error('Error completing order:', error);
+      alert('Failed to place order. Please try again.');
+    }
   };
 
   return (
@@ -26,7 +44,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ selectedProducts }) => {
         ))}
       </ul>
       <h3 className='totali'>Total: {calculateTotal()}€</h3>
-      <button className='order-button'>Complete Order</button>
+      <button className='order-button' onClick={handleCompleteOrder}>Complete Order</button>
       <button className='order-button cancel-button'>Cancel Order</button>
     </div>
   );
