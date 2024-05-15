@@ -37,6 +37,8 @@
     padding: 10px;
     background-color: #313638;
     color: white;
+    overflow-y: hidden;
+    position: relative;
   }
   
   .products-section {
@@ -70,4 +72,41 @@
   background-color: #bedaf7;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(5, 124, 229, 0.658);
+}
+
+.order-summary {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.order-button {
+  margin-bottom: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.order-button:hover {
+  background-color: #0056b3;
+}
+
+.cancel-button {
+  margin-top: 0; /* Add some space between the two buttons */
+  background-color: #dc3545; /* Use red color for the Cancel button */
+}
+
+.cancel-button:hover {
+  background-color: #c82333; /* Darker red on hover */
+}
+
+.totali{
+  margin-top: auto;
+}
+
+.order-text-above{
+  margin-top: 5px;
 }

@@ -9,37 +9,31 @@ interface Product {
 
 interface ProductGridProps {
   categoryId: number | null;
+  onProductClick: (productId: number, productName: string, productPrice: number) => void;
 }
 
-const ProductGrid: React.FC<ProductGridProps> = ({ categoryId }) => {
+const ProductGrid: React.FC<ProductGridProps> = ({ categoryId, onProductClick }) => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get<Product[]>(`https://localhost:44389/api/Product/get_products_by_category/${categoryId}`);
-        setProducts(response.data);
+        if (categoryId !== null) {
+          const response = await axios.get<Product[]>(`https://localhost:44389/api/Product/get_products_by_category/${categoryId}`);
+          setProducts(response.data);
+        }
       } catch (error) {
         console.error('Error fetching products:', error);
       }
     };
 
-    if (categoryId !== null) {
-      fetchProducts();
-    } else {
-      setProducts([]); 
-    }
+    fetchProducts();
   }, [categoryId]);
-
-  const handleClick = (productId: number, productName: string, productPrice: number) => {
-    console.log('Product clicked:', productId, productName, productPrice);
-    // qitu duhet logjika
-  };
 
   return (
     <div className="products-section">
       {products.map((product) => (
-        <div key={product.id} className="product-box" onClick={() => handleClick(product.id, product.name, product.price)}>
+        <div key={product.id} className="product-box" onClick={() => onProductClick(product.id, product.name, product.price)}>
           <div>
             <h3>{product.name}</h3>
             <p>Price: {product.price}€</p>
