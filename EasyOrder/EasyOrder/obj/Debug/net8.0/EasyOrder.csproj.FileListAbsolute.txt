@@ -124,7 +124,6 @@ F:\Flori\Fakulltet\Punime - Projekte - Detyra - Shenime\Semestri 4\Lenda Laborat
 F:\Flori\Fakulltet\Punime - Projekte - Detyra - Shenime\Semestri 4\Lenda Laboratorike 1\Final\Github Repository\EasyOrder-POS\EasyOrder\EasyOrder\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.EasyOrder.props
 F:\Flori\Fakulltet\Punime - Projekte - Detyra - Shenime\Semestri 4\Lenda Laboratorike 1\Final\Github Repository\EasyOrder-POS\EasyOrder\EasyOrder\obj\Debug\net8.0\staticwebassets.pack.json
 F:\Flori\Fakulltet\Punime - Projekte - Detyra - Shenime\Semestri 4\Lenda Laboratorike 1\Final\Github Repository\EasyOrder-POS\EasyOrder\EasyOrder\obj\Debug\net8.0\scopedcss\bundle\EasyOrder.styles.css
-F:\Flori\Fakulltet\Punime - Projekte - Detyra - Shenime\Semestri 4\Lenda Laboratorike 1\Final\Github Repository\EasyOrder-POS\EasyOrder\EasyOrder\obj\Debug\net8.0\EasyOrder.csproj.CopyComplete
 F:\Flori\Fakulltet\Punime - Projekte - Detyra - Shenime\Semestri 4\Lenda Laboratorike 1\Final\Github Repository\EasyOrder-POS\EasyOrder\EasyOrder\obj\Debug\net8.0\EasyOrder.dll
 F:\Flori\Fakulltet\Punime - Projekte - Detyra - Shenime\Semestri 4\Lenda Laboratorike 1\Final\Github Repository\EasyOrder-POS\EasyOrder\EasyOrder\obj\Debug\net8.0\refint\EasyOrder.dll
 F:\Flori\Fakulltet\Punime - Projekte - Detyra - Shenime\Semestri 4\Lenda Laboratorike 1\Final\Github Repository\EasyOrder-POS\EasyOrder\EasyOrder\obj\Debug\net8.0\EasyOrder.pdb
@@ -428,3 +427,4 @@ F:\Flori\Fakulltet\Punime - Projekte - Detyra - Shenime\Semestri 4\Lenda Laborat
 F:\Flori\Fakulltet\Punime - Projekte - Detyra - Shenime\Semestri 4\Lenda Laboratorike 1\Final\Github Repository\EasyOrder-POS\EasyOrder\EasyOrder\bin\Debug\net8.0\Microsoft.AspNetCore.Metadata.dll
 F:\Flori\Fakulltet\Punime - Projekte - Detyra - Shenime\Semestri 4\Lenda Laboratorike 1\Final\Github Repository\EasyOrder-POS\EasyOrder\EasyOrder\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
 F:\Flori\Fakulltet\Punime - Projekte - Detyra - Shenime\Semestri 4\Lenda Laboratorike 1\Final\Github Repository\EasyOrder-POS\EasyOrder\EasyOrder\bin\Debug\net8.0\Microsoft.JSInterop.dll
+F:\Flori\Fakulltet\Punime - Projekte - Detyra - Shenime\Semestri 4\Lenda Laboratorike 1\Final\Github Repository\EasyOrder-POS\EasyOrder\EasyOrder\obj\Debug\net8.0\EasyOrder.csproj.Up2Date

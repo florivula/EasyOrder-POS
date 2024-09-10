@@ -9,52 +9,63 @@ namespace EasyOrder.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly UserService _userServices;
+        private readonly UserService _userService;
+
         public UsersController(UserService userService)
         {
-            _userServices = userService;
+            _userService = userService;
         }
 
         [HttpGet("get_users")]
         public IActionResult GetUsers()
         {
-            var users = _userServices.GetAllUsers();
+            var users = _userService.GetAllUsers();
             return Ok(users);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetUserById(int id)
         {
-            var user = _userServices.GetUserById(id);
+            var user = _userService.GetUserById(id);
             if (user == null)
             {
-                return NotFound();
+                return NotFound(new { message = "User not found" });
             }
             return Ok(user);
         }
 
         [HttpPost]
-        public IActionResult CreateUser(Users user)
+        public IActionResult CreateUser([FromBody] User user)
         {
-            _userServices.AddUser(user);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _userService.AddUser(user);
             return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateUser(int id, Users user)
+        public IActionResult UpdateUser(int id, [FromBody] User user)
         {
             if (id != user.Id)
             {
-                return BadRequest();
+                return BadRequest(new { message = "User ID mismatch" });
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
             }
 
             try
             {
-                _userServices.UpdateUser(user);
+                _userService.UpdateUser(user);
             }
             catch (Exception)
             {
-                return NotFound();
+                return NotFound(new { message = "User not found" });
             }
 
             return NoContent();
@@ -63,13 +74,13 @@ namespace EasyOrder.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteUser(int id)
         {
-            var user = _userServices.GetUserById(id);
+            var user = _userService.GetUserById(id);
             if (user == null)
             {
-                return NotFound();
+                return NotFound(new { message = "User not found" });
             }
 
-            _userServices.DeleteUser(id);
+            _userService.DeleteUser(id);
             return NoContent();
         }
     }

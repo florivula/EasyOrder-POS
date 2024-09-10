@@ -4,12 +4,18 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure JSON serialization options
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles; // Prevents circular references without extra metadata
+        options.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase; // Ensures property names are camelCase
+    });
+
 // Add services to the container.
 builder.Services.AddDbContext<AppDbContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("EasyOrderConnectionString")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("EasyOrderConnectionString")));
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -33,10 +39,10 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseCors(builder=>
-builder.AllowAnyOrigin()
-.AllowAnyHeader()
-.AllowAnyMethod()
+app.UseCors(builder =>
+    builder.AllowAnyOrigin()
+           .AllowAnyHeader()
+           .AllowAnyMethod()
 );
 
 app.Run();

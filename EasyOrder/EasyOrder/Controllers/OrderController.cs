@@ -1,7 +1,8 @@
 ﻿using EasyOrder.Data.Services;
 using EasyOrder.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EasyOrder.Controllers
 {
@@ -9,24 +10,23 @@ namespace EasyOrder.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
-        private readonly OrderService _orderServices;
+        private readonly OrderService _orderService;
+
         public OrderController(OrderService orderService)
         {
-            _orderServices = orderService;
+            _orderService = orderService;
         }
 
-        [HttpGet("get_orders")]
-        public IActionResult GetOrders()
+        [HttpGet]
+        public ActionResult<List<Order>> GetAllOrders()
         {
-            var orders = _orderServices.GetAllOrders();
-            return Ok(orders);
+            return Ok(_orderService.GetAllOrders());
         }
-
 
         [HttpGet("{id}")]
-        public IActionResult GetOrderById(int id)
+        public ActionResult<Order> GetOrderById(int id)
         {
-            var order = _orderServices.GetOrderById(id);
+            var order = _orderService.GetOrderById(id);
             if (order == null)
             {
                 return NotFound();
@@ -35,43 +35,63 @@ namespace EasyOrder.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateOrder(Order order)
+        public async Task<ActionResult> AddOrder(Order order)
         {
-            _orderServices.AddOrder(order);
-            return CreatedAtAction(nameof(GetOrderById), new { id = order.Id }, order);
+            try
+            {
+                var createdOrder = await _orderService.AddOrder(order);
+                return CreatedAtAction(nameof(GetOrderById), new { id = createdOrder.Id }, createdOrder);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateOrder(int id, Order order)
+        public async Task<ActionResult> UpdateOrder(int id, [FromBody] Order order)
         {
             if (id != order.Id)
             {
-                return BadRequest();
+                return BadRequest("Order ID in the URL does not match the ID in the request body.");
             }
 
             try
             {
-                _orderServices.UpdateOrder(order);
+                await _orderService.UpdateOrder(order);
+                return NoContent();
             }
-            catch (Exception)
+            catch (ArgumentNullException ex)
             {
-                return NotFound();
+                return BadRequest(ex.Message);
             }
-
-            return NoContent();
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult DeleteOrder(int id)
-        {
-            var order = _orderServices.GetOrderById(id);
-            if (order == null)
-            {
-                return NotFound();
-            }
 
-            _orderServices.DeleteOrder(id);
-            return NoContent();
+        [HttpDelete("{id}")]
+        public ActionResult DeleteOrder(int id)
+        {
+            try
+            {
+                _orderService.DeleteOrder(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
     }
 }

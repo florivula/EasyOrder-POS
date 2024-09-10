@@ -1,5 +1,11 @@
-import React, { useState } from 'react';
-import { Button, Modal, Box, TextField, Typography } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { Button, Modal, Box, TextField, Typography, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
+import axios from 'axios';
+
+interface Category {
+  id: number;
+  name: string;
+}
 
 interface AddProductModalProps {
   open: boolean;
@@ -10,15 +16,33 @@ interface AddProductModalProps {
 const AddProductModal: React.FC<AddProductModalProps> = ({ open, onClose, onSave }) => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
-  const [categoryId, setCategoryId] = useState('');
+  const [categoryId, setCategoryId] = useState<number | ''>('');
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get('https://localhost:44389/api/Category/get_categories');
+        if (Array.isArray(response.data)) {
+          setCategories(response.data);
+        } else {
+          console.error('Expected an array but got', response.data);
+        }
+      } catch (error) {
+        console.error('Error fetching categories', error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   const handleSave = async () => {
-    if (!name || !price || !categoryId) {
+    if (!name || !price || categoryId === '') {
       alert('Please fill in all fields');
       return;
     }
 
-    await onSave(name, parseFloat(price), parseFloat(categoryId));
+    await onSave(name, parseFloat(price), categoryId);
     onClose();
   };
 
@@ -54,14 +78,28 @@ const AddProductModal: React.FC<AddProductModalProps> = ({ open, onClose, onSave
           onChange={(e) => setPrice(e.target.value)}
           fullWidth
           margin="normal"
+          type="number"
         />
-        <TextField
-          label="Category ID"
-          value={categoryId}
-          onChange={(e) => setCategoryId(e.target.value)}
-          fullWidth
-          margin="normal"
-        />
+        <FormControl fullWidth margin="normal">
+          <InputLabel id="category-label">Category</InputLabel>
+          <Select
+            labelId="category-label"
+            value={categoryId}
+            onChange={(e) => setCategoryId(Number(e.target.value))}
+            displayEmpty
+            renderValue={(selected) => {
+              const selectedCategory = categories.find((cat) => cat.id === Number(selected));
+              return selectedCategory ? selectedCategory.name : '';
+            }}
+            label="Category"
+          >
+            {categories.map((category) => (
+              <MenuItem key={category.id} value={category.id}>
+                {category.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
           <Button onClick={handleSave} variant="contained" color="primary" sx={{ mr: 2 }}>
             Save

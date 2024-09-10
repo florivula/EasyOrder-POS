@@ -18,7 +18,7 @@ namespace EasyOrder.Controllers // Update with your actual namespace
         }
 
         [HttpPost]
-        public async Task<IActionResult> Signup(Users model)
+        public async Task<IActionResult> Signup(User model)
         {
             // Check if the user already exists
             var existingUser = await dbContext.Users.FirstOrDefaultAsync(u => u.Email == model.Email);

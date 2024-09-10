@@ -5,25 +5,25 @@
 namespace EasyOrder.Migrations
 {
     /// <inheritdoc />
-    public partial class UsersRole : Migration
+    public partial class OrderNameRemovedFromModel : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "userName",
-                table: "Users");
+                name: "Name",
+                table: "Orders");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "userName",
-                table: "Users",
-                type: "int",
+            migrationBuilder.AddColumn<string>(
+                name: "Name",
+                table: "Orders",
+                type: "nvarchar(max)",
                 nullable: false,
-                defaultValue: 0);
+                defaultValue: "");
         }
     }
 }

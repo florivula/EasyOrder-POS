@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 interface Product {
@@ -7,35 +7,62 @@ interface Product {
   price: number;
 }
 
+interface OrderProduct {
+  productId: number;
+  quantity: number;
+}
+
 interface OrderSummaryProps {
-  selectedProducts: Product[];
+  selectedProducts: Map<number, { product: Product; quantity: number }>;
   onCompleteOrder: () => void;
   onCancelOrder: () => void;
 }
 
 const OrderSummary: React.FC<OrderSummaryProps> = ({ selectedProducts, onCompleteOrder, onCancelOrder }) => {
   const calculateTotal = (): number => {
-    return selectedProducts.reduce((total, product) => total + product.price, 0);
+    let total = 0;
+    selectedProducts.forEach(({ product, quantity }) => {
+      total += product.price * quantity;
+    });
+    return total;
   };
 
   const handleCompleteOrder = async () => {
-    if(selectedProducts.length === 0){
+    if (selectedProducts.size === 0) {
       alert('Please select a product first.');
-    }else{
+      return;
+    }
+
     try {
       const total = calculateTotal();
-      const productsString = selectedProducts.map(product => `${product.name} - ${product.price}€`).join(', ');
-      await axios.post('https://localhost:44389/api/Order', {
-        products: productsString,
-        total: total
-      });
-      onCompleteOrder(); // Clear selected products
+      
+      // Create the order payload
+      const order = {
+        total: total,
+        dateCreated: new Date().toISOString(),
+        waiterId: 3, // Replace with actual waiter ID from your auth logic
+        orderProducts: Array.from(selectedProducts.entries()).map(([_, { product, quantity }]) => ({
+          productId: product.id,
+          quantity
+        }))
+      };
+
+      // Log the order payload for debugging
+      console.log('Order payload:', order);
+
+      // Send the request
+      const response = await axios.post('https://localhost:44389/api/Order', order);
+
+      // Log the response for debugging
+      console.log('API Response:', response);
+
+      onCompleteOrder(); // Clear selected products or reset the state
       alert('Order placed successfully!');
     } catch (error) {
-      console.error('Error completing order:', error);
+      // Log error details for debugging
+      console.error('Error completing order:', error.response ? error.response.data : error.message);
       alert('Failed to place order. Please try again.');
     }
-  }
   };
 
   const handleCancelOrder = () => {
@@ -46,9 +73,9 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ selectedProducts, onComplet
     <div className="order-summary">
       <h2 className='order-text-above'>Order Summary</h2>
       <ul>
-        {selectedProducts.map((product) => (
+        {Array.from(selectedProducts.entries()).map(([_, { product, quantity }]) => (
           <li key={product.id}>
-            {product.name} - {product.price}€
+            {product.name} - {product.price}€ x {quantity}
           </li>
         ))}
       </ul>

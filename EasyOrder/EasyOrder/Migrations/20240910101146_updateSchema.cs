@@ -5,7 +5,7 @@
 namespace EasyOrder.Migrations
 {
     /// <inheritdoc />
-    public partial class usersfix : Migration
+    public partial class updateSchema : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
