@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal, Box, TextField, Typography } from '@mui/material';
+import Swal from 'sweetalert2';
 
 interface AddCategoryModalProps {
   open: boolean;
@@ -11,7 +12,8 @@ const AddCategoryModal: React.FC<AddCategoryModalProps> = ({ open, onClose, onSa
   const [name, setName] = useState('');
   const handleSave = async () => {
     if (!name) {
-      alert('Please fill in all fields');
+      onClose();
+      Swal.fire('Error', 'Please fill in all fields to add a category!', 'error');
       return;
     }
 

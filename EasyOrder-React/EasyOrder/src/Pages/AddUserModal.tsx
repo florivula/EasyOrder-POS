@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal, Box, TextField, Typography, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import Swal from 'sweetalert2';
 
 interface AddUserModalProps {
   open: boolean;
@@ -15,7 +16,8 @@ const AddUserModal: React.FC<AddUserModalProps> = ({ open, onClose, onSave }) =>
 
   const handleSave = async () => {
     if (!name || !email || !password || !role) {
-      alert('Please fill in all fields');
+      onClose();
+      Swal.fire('Error', 'Please fill in all fields to add a new user!', 'error');
       return;
     }
 

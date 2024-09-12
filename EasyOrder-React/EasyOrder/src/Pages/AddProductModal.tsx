@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Modal, Box, TextField, Typography, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 interface Category {
   id: number;
@@ -38,7 +39,8 @@ const AddProductModal: React.FC<AddProductModalProps> = ({ open, onClose, onSave
 
   const handleSave = async () => {
     if (!name || !price || categoryId === '') {
-      alert('Please fill in all fields');
+      onClose();
+      Swal.fire('Error', 'Please fill in all fields to add a new product!', 'error');
       return;
     }
 

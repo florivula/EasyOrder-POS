@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 interface Product {
   id: number;
@@ -29,7 +30,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ selectedProducts, onComplet
 
   const handleCompleteOrder = async () => {
     if (selectedProducts.size === 0) {
-      alert('Please select a product first.');
+      Swal.fire('Error', 'Please select a product first to complete an order!.', 'error');
       return;
     }
 
@@ -57,11 +58,11 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ selectedProducts, onComplet
       console.log('API Response:', response);
 
       onCompleteOrder(); // Clear selected products or reset the state
-      alert('Order placed successfully!');
+      Swal.fire('Success', 'Order placed successfully!', 'success');
     } catch (error) {
       // Log error details for debugging
       console.error('Error completing order:', error.response ? error.response.data : error.message);
-      alert('Failed to place order. Please try again.');
+      Swal.fire('Error', 'Failed to place order. Please try again.', 'error');
     }
   };
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Modal, Box, Typography, Autocomplete, TextField as MUITextField, TextField } from '@mui/material';
+import Swal from 'sweetalert2';
 
 interface Product {
   id: number;
@@ -39,14 +40,14 @@ const EditOrderModal: React.FC<EditOrderModalProps> = ({ open, onClose, orderId,
 
   const handleSave = async () => {
     if (selectedProducts.length === 0 || newTotal === '') {
-      alert('Please fill in all fields');
+      Swal.fire('Error', 'Please fill in all fields', 'error')
       return;
     }
   
     const numericTotal = typeof newTotal === 'string' ? parseFloat(newTotal) : newTotal;
   
     if (isNaN(numericTotal) || numericTotal <= 0) {
-      alert('Please enter a valid total amount');
+      Swal.fire('Error', 'Please enter a valid total amount','error')
       return;
     }
   

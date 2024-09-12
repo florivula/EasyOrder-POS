@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Modal, Box, Typography, Autocomplete, TextField as MUITextField } from '@mui/material';
+import Swal from 'sweetalert2';
 
 interface Product {
   id: number;
@@ -33,13 +34,15 @@ const AddOrderModal: React.FC<AddOrderModalProps> = ({ open, onClose, onSave, av
 
   const handleSave = async () => {
     if (selectedProducts.length === 0) {
-      alert('Please select at least one product');
+      onClose();
+      Swal.fire('Error', 'Please select at least one product!', 'error');
       return;
     }
 
     const total = calculateTotal();
     if (total <= 0) {
-      alert('Please enter a valid total amount');
+      onClose();
+      Swal.fire('Error', 'Please provide a valid total amount, no less than 0!');
       return;
     }
 

@@ -13,6 +13,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Swal from 'sweetalert2';
 
 function Copyright(props: any) {
   return (
@@ -34,27 +35,35 @@ export default function SignUp() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
-    console.log({
-      name: data.get('firstName'),
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const firstName = data.get('firstName')?.toString().trim();
+    const lastName = data.get('lastName')?.toString().trim();
+    const email = data.get('email')?.toString().trim();
+    const password = data.get('password')?.toString().trim();
 
+    // Validate all fields before sending the request
+    if (!firstName || !lastName || !email || !password) {
+      Swal.fire('Error', 'Please fill in all fields', 'error');
+      return;
+    }
+
+    // Now proceed with the API call since all fields are filled
     try {
       const response = await axios.post('https://localhost:44389/api/Signup', {
-        Name: data.get('firstName') + ' ' + data.get('lastName'),
-        Email: data.get('email'),
-        Password: data.get('password'),
+        Name: `${firstName} ${lastName}`,
+        Email: email,
+        Password: password,
         Role: "Waiter",
       });
+
       console.log(response.data);
-      alert('User registered successfully!');
+      Swal.fire('Success', 'User registered successfully, proceed to Log-In.', 'success');
       setTimeout(() => {
         window.location.href = '/signin';
-      }, 1000);
+      }, 2500);
     } catch (error) {
-      console.error(error);
-    }    
+      console.error('Error registering user:', error);
+      Swal.fire('Error', 'Failed to register user. Please try again.', 'error');
+    }
   };
 
   return (
