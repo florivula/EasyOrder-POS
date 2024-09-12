@@ -6,19 +6,12 @@ interface Category {
   name: string;
 }
 
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  // Add other properties if needed
-}
-
-
-interface CategoryGridProps {
+interface CategoriesGridProps {
   setSelectedCategoryId: (id: number) => void;
+  categoryColors: { [key: number]: string };
 }
 
-const CategoriesGrid: React.FC<CategoryGridProps> = ({ setSelectedCategoryId }) => {
+const CategoriesGrid: React.FC<CategoriesGridProps> = ({ setSelectedCategoryId, categoryColors }) => {
   const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
@@ -34,27 +27,22 @@ const CategoriesGrid: React.FC<CategoryGridProps> = ({ setSelectedCategoryId }) 
     fetchCategories();
   }, []);
 
-  const handleClick = (categoryId: number, categoryName: string) => {
+  const handleClick = (categoryId: number) => {
     setSelectedCategoryId(categoryId);
-    fetchProductsByCategory(categoryId);
-  };
-
-  const fetchProductsByCategory = async (categoryId: number) => {
-    try {
-      const response = await axios.get<[Product]>(`https://localhost:44389/api/Product/get_products_by_category/${categoryId}`);
-      // Handle the response to update the products in the ProductGrid component
-    } catch (error) {
-      console.error('Error fetching products by category:', error);
-    }
+    // Removed fetchProductsByCategory as it should be handled in the parent or related component
   };
 
   return (
     <div className="categories-section">
       {categories.map((category) => (
-        <div key={category.id} className="category-box" onClick={() => handleClick(category.id, category.name)}>
+        <div
+          key={category.id}
+          className="category-box"
+          style={{ backgroundColor: categoryColors[category.id] }} // Apply the color dynamically
+          onClick={() => handleClick(category.id)}
+        >
           <div>
             <h3>{category.name}</h3>
-            <p>Category ID: {category.id}</p>
           </div>
         </div>
       ))}

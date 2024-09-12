@@ -10,20 +10,24 @@ interface Product {
 interface ProductGridProps {
   categoryId: number | null;
   onProductClick: (productId: number, productName: string, productPrice: number) => void;
+  categoryColors: { [key: number]: string }; // Add this line to include the categoryColors prop
 }
 
-const ProductGrid: React.FC<ProductGridProps> = ({ categoryId, onProductClick }) => {
+const ProductGrid: React.FC<ProductGridProps> = ({ categoryId, onProductClick, categoryColors }) => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
+      if (categoryId === null) {
+        setProducts([]); // Clear products if no category is selected
+        return;
+      }
+
       try {
-        if (categoryId !== null) {
-          const response = await axios.get<Product[]>(`https://localhost:44389/api/Product/get_products_by_category/${categoryId}`);
-          setProducts(response.data);
-        }
+        const response = await axios.get<Product[]>(`https://localhost:44389/api/Product/get_products_by_category/${categoryId}`);
+        setProducts(response.data);
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error(`Error fetching products for category ID ${categoryId}:`, error);
       }
     };
 
@@ -33,10 +37,15 @@ const ProductGrid: React.FC<ProductGridProps> = ({ categoryId, onProductClick })
   return (
     <div className="products-section">
       {products.map((product) => (
-        <div key={product.id} className="product-box" onClick={() => onProductClick(product.id, product.name, product.price)}>
+        <div
+          key={product.id}
+          className="product-box"
+          onClick={() => onProductClick(product.id, product.name, product.price)}
+          style={{ backgroundColor: categoryId !== null ? categoryColors[categoryId] : '#bedaf7' }} // Use category color if available
+        >
           <div>
             <h3>{product.name}</h3>
-            <p>Price: {product.price}€</p>
+            <p>{product.price}€</p>
           </div>
         </div>
       ))}

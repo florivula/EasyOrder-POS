@@ -15,6 +15,15 @@ interface SelectedProduct {
   quantity: number;
 }
 
+const categoryColors: { [key: number]: string } = {
+  1: '#fdffb6', // category 1
+  2: '#caffbf', // category 2
+  3: '#ffd6a5', // category 3
+  4: '#ffadad',
+  5: '#bdb2ff',
+  6: '#9bf6ff'
+};
+
 const Order = () => {
   const [selectedProducts, setSelectedProducts] = useState<Map<number, SelectedProduct>>(new Map());
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
@@ -23,7 +32,6 @@ const Order = () => {
     setSelectedProducts(prevState => {
       const updatedProducts = new Map(prevState);
   
-      // If the product already exists in the map, update the quantity
       if (updatedProducts.has(productId)) {
         const existingProduct = updatedProducts.get(productId)!;
         updatedProducts.set(productId, {
@@ -31,7 +39,6 @@ const Order = () => {
           quantity: existingProduct.quantity + 1
         });
       } else {
-        // If the product is not in the map, add it with quantity 1
         updatedProducts.set(productId, {
           product: { id: productId, name: productName, price: productPrice },
           quantity: 1
@@ -42,7 +49,6 @@ const Order = () => {
     });
   };
   
-
   const handleClearProducts = () => {
     setSelectedProducts(new Map());
   };
@@ -58,11 +64,11 @@ const Order = () => {
         <div className="middle">
           <div className="middle-section">
             Categories
-            <CategoriesGrid setSelectedCategoryId={setSelectedCategoryId} />
+            <CategoriesGrid setSelectedCategoryId={setSelectedCategoryId} categoryColors={categoryColors} />
           </div>
           <div className="middle-section">
             Products
-            <ProductGrid categoryId={selectedCategoryId} onProductClick={handleProductClick} />
+            <ProductGrid categoryId={selectedCategoryId} onProductClick={handleProductClick} categoryColors={categoryColors} />
           </div>
         </div>
         <div className="right-side">
