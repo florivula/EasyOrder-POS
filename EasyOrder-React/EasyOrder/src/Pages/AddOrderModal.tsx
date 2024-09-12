@@ -104,7 +104,7 @@ const AddOrderModal: React.FC<AddOrderModalProps> = ({ open, onClose, onSave, av
           </Box>
         ))}
         <Typography variant="body1" sx={{ marginTop: '16px', marginBottom: '8px' }}>
-          Total: ${calculateTotal().toFixed(2)}
+          Total: {calculateTotal().toFixed(2)}€
         </Typography>
         <Button variant="contained" color="primary" onClick={handleSave} style={{ marginTop: '16px' }}>
           Save
