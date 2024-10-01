@@ -20,8 +20,11 @@ const categoryColors: { [key: number]: string } = {
   2: '#caffbf', // category 2
   3: '#ffd6a5', // category 3
   4: '#ffadad',
-  5: '#bdb2ff',
-  6: '#9bf6ff'
+  6: '#bdb2ff',
+  7: '#9bf6ff',
+  8: '#fdffb6',
+  9: '#caffbf',
+  10: '#ffd6a5'
 };
 
 const Order = () => {
